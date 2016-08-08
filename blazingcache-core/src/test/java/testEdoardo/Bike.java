@@ -1,6 +1,6 @@
 package testEdoardo;
 
-public class Bike
+public class Bike implements java.io.Serializable
 {
 	private Frame frame;
 	private Wheel frontWheel;

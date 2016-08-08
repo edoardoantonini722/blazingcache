@@ -1,6 +1,6 @@
 package testEdoardo;
 
-public class Wheel
+public class Wheel implements java.io.Serializable
 {
 	private double diameter;
 	private Boolean lenticular;

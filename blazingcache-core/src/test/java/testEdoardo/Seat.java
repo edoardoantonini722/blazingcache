@@ -1,6 +1,6 @@
 package testEdoardo;
 
-public class Seat
+public class Seat implements java.io.Serializable
 {
 	private Brand brand;
 	private double lenght;

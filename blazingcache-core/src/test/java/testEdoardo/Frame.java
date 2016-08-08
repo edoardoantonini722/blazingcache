@@ -1,6 +1,6 @@
 package testEdoardo;
 
-public class Frame
+public class Frame implements java.io.Serializable
 {
 	private Brand brand;
 	private double weight;

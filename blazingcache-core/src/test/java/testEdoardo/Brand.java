@@ -1,6 +1,6 @@
 package testEdoardo;
 
-public enum Brand
+public enum Brand implements java.io.Serializable
 {
 	BMC,PINARELLO,BIANCHI;
 }
