@@ -2,6 +2,10 @@ package testEdoardo;
 
 public class Bike implements java.io.Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7257429130826014400L;
 	private Frame frame;
 	private Wheel frontWheel;
 	private Wheel rearWheel;
@@ -19,7 +23,7 @@ public class Bike implements java.io.Serializable
 		return this.frontWheel;
 	}
 	
-	public Wheel getRealWheel()
+	public Wheel getRearWheel()
 	{
 		return this.rearWheel;
 	}
@@ -48,6 +52,14 @@ public class Bike implements java.io.Serializable
 	public void setSeat(Seat seat)
 	{
 		this.seat=seat;
+	}
+	
+	@Override
+	public String toString() {
+		return "Bike with seat "+seat.toString()+
+				" and frame "+frame.toString()+
+				" and front wheel "+frontWheel.toString()+
+				" and rear wheel "+rearWheel.toString();
 	}
 	
 	

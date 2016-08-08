@@ -2,6 +2,10 @@ package testEdoardo;
 
 public class Frame implements java.io.Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2729405158038986117L;
 	private Brand brand;
 	private double weight;
 	
@@ -21,6 +25,11 @@ public class Frame implements java.io.Serializable
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+	
+	@Override
+	public String toString() {
+		return this.brand.toString() + " with weight "+this.weight;
 	}
 	
 	

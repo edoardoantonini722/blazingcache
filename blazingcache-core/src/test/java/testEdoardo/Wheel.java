@@ -2,6 +2,10 @@ package testEdoardo;
 
 public class Wheel implements java.io.Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 692699574190526525L;
 	private double diameter;
 	private Boolean lenticular;
 	private Profile profile;
@@ -40,5 +44,10 @@ public class Wheel implements java.io.Serializable
 
 	public void setBrand(Brand brand) {
 		this.brand = brand;
+	}
+	
+	@Override
+	public String toString() {
+		return this.brand.toString()+" with profile "+this.profile+" and diameter "+this.diameter;
 	}
 }

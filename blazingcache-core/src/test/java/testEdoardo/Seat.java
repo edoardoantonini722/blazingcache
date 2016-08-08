@@ -2,6 +2,10 @@ package testEdoardo;
 
 public class Seat implements java.io.Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2162542740034799195L;
 	private Brand brand;
 	private double lenght;
 	
@@ -21,6 +25,11 @@ public class Seat implements java.io.Serializable
 
 	public void setLenght(double lenght) {
 		this.lenght = lenght;
+	}
+	
+	@Override
+	public String toString() {
+		return this.brand.toString()+" with lenght "+this.lenght;
 	}
 	
 	
