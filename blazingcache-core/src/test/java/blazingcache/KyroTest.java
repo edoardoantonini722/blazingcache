@@ -5,7 +5,6 @@
  */
 package blazingcache;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,18 +22,18 @@ import testEdoardo.Wheel;
 import testEdoardo.Frame;
 import testEdoardo.Profile;
 
-import org.junit.Assert;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- *
+ *Test class for the serializers.
  * @author edoardoantonini722
  */
 public class KyroTest {
 
+	//sometimes, after this number the JDK serializer stop working, i don't know why
+	private static final int BIKE_NUMBER=390000;
 	
 	List<Bike> bikeArray = new ArrayList<>();
 	List<Bike> returnedBikeArray;
@@ -44,7 +43,7 @@ public class KyroTest {
     	long start = System.currentTimeMillis();
     	generateBikeArray();
     	long end = System.currentTimeMillis();
-    	System.out.println("Generation completed in:"+(end-start)+" millisecondi");
+    	System.out.println("Generation completed in : "+(end-start)+" milliseconds");
     	
     	
         ServerHostData serverHostData = new ServerHostData("localhost", -1, "test", false, null);
@@ -54,34 +53,35 @@ public class KyroTest {
                 client1.start();
                 assertTrue(client1.waitForConnection(10000));
                 
-                
                 start = System.currentTimeMillis();
                 
                 client1.setEntrySerializer(new KyroEntrySerializer());
-                //put a lot of bike objects with Kyro
-                client1.putObject("bikeArrayKyro", this.bikeArray, 1000000);
-                //read a lot of bike objects with Kyro
-                returnedBikeArray=client1.fetchObject("bikeArrayKyro");
+                //put a big list with Kyro
+                client1.putObject("bikeArray", this.bikeArray, 30000);
+                //read a big list with Kyro
+                returnedBikeArray=client1.getObject("bikeArray");
                 
             	end = System.currentTimeMillis();
             	
-            	System.out.println("Kyro time "+(end-start)+" milliseconds");
-                System.out.println(returnedBikeArray.get(52).toString());
+            	System.out.println("Kyro time :"+(end-start)+" milliseconds");
+            	assertEquals(this.returnedBikeArray,this.bikeArray);
 
                 
                 start = System.currentTimeMillis();
                 
                 client1.setEntrySerializer(new JDKEntrySerializer());
-                //put a lot of bike objects without Kyro
-                client1.putObject("bikeArrayKyro", this.bikeArray, 1000000);
-                //read a lot of bike objects without Kyro
-                returnedBikeArray=client1.fetchObject("bikeArrayKyro");
+                //put a big list without Kyro
+                client1.putObject("bikeArray", this.bikeArray, 30000);
+                //read a big list without Kyro
+                returnedBikeArray=client1.getObject("bikeArray");
                 
                 end = System.currentTimeMillis();
                 
-                System.out.println("JDK time "+(end-start)+" milliseconds");
-                System.out.println(returnedBikeArray.get(52).toString());
-
+                System.out.println("JDK time :"+(end-start)+" milliseconds");
+                
+                assertEquals(this.returnedBikeArray,this.bikeArray);
+                assertEquals(this.returnedBikeArray.get(52),this.bikeArray.get(52));
+				
 
             }
 
@@ -92,7 +92,7 @@ public class KyroTest {
 
     private void generateBikeArray()
     {
-    	for(int i=0;i<300000;i++)
+    	for(int i=0;i<BIKE_NUMBER;i++)
     	{
     		Bike bike = new Bike();
     		Frame frame = new Frame();

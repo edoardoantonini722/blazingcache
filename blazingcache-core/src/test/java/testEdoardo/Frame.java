@@ -1,10 +1,11 @@
 package testEdoardo;
-
+/**
+ * Class representing bike frame.
+ * @author edoardoantonini722
+ *
+ */
 public class Frame implements java.io.Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2729405158038986117L;
 	private Brand brand;
 	private double weight;

@@ -1,10 +1,11 @@
 package testEdoardo;
-
+/**
+ * Class representing bike wheel
+ * @author edoardoantonini722
+ *
+ */
 public class Wheel implements java.io.Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 692699574190526525L;
 	private double diameter;
 	private Boolean lenticular;

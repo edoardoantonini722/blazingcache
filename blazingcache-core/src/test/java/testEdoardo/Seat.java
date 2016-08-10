@@ -1,10 +1,11 @@
 package testEdoardo;
-
+/**
+ * Class representing the bike seat
+ * @author edoardoantonini722
+ *
+ */
 public class Seat implements java.io.Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2162542740034799195L;
 	private Brand brand;
 	private double lenght;

@@ -1,10 +1,11 @@
 package testEdoardo;
-
+/**
+ * Simple bike class
+ * @author edoardoantonini722
+ *
+ */
 public class Bike implements java.io.Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7257429130826014400L;
 	private Frame frame;
 	private Wheel frontWheel;
