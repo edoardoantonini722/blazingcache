@@ -23,7 +23,7 @@ public class KyroEntrySerializer implements EntrySerializer{
 	
 	@Override
 	public byte[] serializeObject(String key, Object object) throws CacheException {
-	        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 			Output output = new Output(buffer);
 			kyro.writeObject(output, object);
 			byte[] value = output.toBytes();
