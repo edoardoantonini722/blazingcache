@@ -23,20 +23,20 @@ public class KyroEntrySerializer implements EntrySerializer{
 	
 	@Override
 	public byte[] serializeObject(String key, Object object) throws CacheException {
-			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-			Output output = new Output(buffer);
-			kyro.writeObject(output, object);
-			byte[] value = output.toBytes();
-			output.close();
-			return value;
+		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		Output output = new Output(buffer);
+		kyro.writeObject(output, object);
+		byte[] value = output.toBytes();
+		output.close();
+		return value;
 	}
 
 	@Override
 	public Object deserializeObject(String key, byte[] value) throws CacheException {
-			Input input = new Input(value);
-			Object object = kyro.readClassAndObject(input);
-			input.close();
-			return object;
+		Input input = new Input(value);
+		Object object = kyro.readClassAndObject(input);
+		input.close();
+		return object;
 	}
 
 }
