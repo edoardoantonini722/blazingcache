@@ -29,12 +29,12 @@ import static org.junit.Assert.assertTrue;
  */
 public class KyroTest {
 
-	//sometimes, after this number the JDK serializer stop working, i don't know why
 	private static final int BIKE_NUMBER=100000;
 	
 	private long start,end;
 	private KyroEntrySerializer kyroSerializer = new KyroEntrySerializer();
 	private JDKEntrySerializer jdkSerializer = new JDKEntrySerializer();
+	
     @Test
     public void basicTest() throws Exception {
     	
@@ -43,6 +43,7 @@ public class KyroTest {
             cacheServer.start();
             try (CacheClient client1 = new CacheClient("theClient1", "ciao", new JVMServerLocator(cacheServer, false));
             		CacheClient client2 = new CacheClient("theClient1", "ciao", new JVMServerLocator(cacheServer, false));) {
+            	
                 client1.start();
                 assertTrue(client1.waitForConnection(10000));
                 client2.start();
