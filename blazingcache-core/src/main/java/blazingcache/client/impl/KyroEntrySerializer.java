@@ -25,8 +25,9 @@ public class KyroEntrySerializer implements EntrySerializer{
 	public byte[] serializeObject(String key, Object object) throws CacheException {
 		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 		Output output = new Output(buffer);
-		kyro.writeObject(output, object);
-		byte[] value = output.toBytes();
+		kyro.writeClassAndObject(output, object);
+		output.flush();
+		byte[] value = buffer.toByteArray();
 		output.close();
 		return value;
 	}
